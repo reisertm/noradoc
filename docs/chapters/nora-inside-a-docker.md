@@ -1,176 +1,228 @@
 # NORA inside a Docker
 
-#### ​Install Docker on your host system
+This chapter describes the Docker-based installation of NORA.
 
-<span style="font-weight: 400;">First, install docker, git and jq on your host system</span>
+## Install Docker on the host system
 
-`<span style="font-weight: 400;">sudo apt-get install docker.io git jq</span>`
+Install Docker, Git, and `jq` on the host:
 
-<span style="font-weight: 400;">There might be an issue with the DNS address in docker. To check this, run</span>
+```bash
+sudo apt-get install docker.io git jq
+```
 
-`<span style="font-weight: 400;">docker run busybox nslookup google.com</span>`
+If Docker has DNS issues, test name resolution:
 
-<span style="font-weight: 400;">If the host cannot be reached, grep the address of your DNS server</span>
+```bash
+docker run busybox nslookup google.com
+```
 
-`<span style="font-weight: 400;">nmcli dev show | grep 'IP4.DNS'</span>`
+If the host cannot be reached, inspect your DNS server:
 
-<span style="font-weight: 400;">create the file </span><span style="font-weight: 400;">/etc/docker/daemon.json</span><span style="font-weight: 400;"> and insert the address as</span>
+```bash
+nmcli dev show | grep 'IP4.DNS'
+```
 
-`<span style="font-weight: 400;">{</span>`
+Then create `/etc/docker/daemon.json` and add the DNS server:
 
-```<span style="font-weight: 400;">    "dns": ["yourDNSip", "8.8.8.8"]</span>`
+```json
+{
+  "dns": ["yourDNSip", "8.8.8.8"]
+}
+```
 
-`<span style="font-weight: 400;">}</span>`
+Restart Docker:
 
-<span style="font-weight: 400;">then restart docker</span>
+```bash
+sudo service docker restart
+```
 
-`<span style="font-weight: 400;">sudo service docker restart</span>`
+Then rerun the `busybox` test above.
 
-<span style="font-weight: 400;">go back to the busybox above and check if it works now.</span>
+Add your user to the Docker group so NORA commands do not require `sudo`:
 
-<span style="font-weight: 400;">Now, you should add your user to the docker group, otherwise you have not to </span>*<span style="font-weight: 400;">sudo</span>*<span style="font-weight: 400;"> all NORA commands </span>
+```bash
+sudo adduser <username> docker
+```
 
-`<span style="font-weight: 400;">sudo adduser <username> docker</span>`
+> You must log out and back in again before this group change takes effect.
 
-<p class="callout warning">**!!! you have to re-login to make these changes apply !!!!!!**</p>
+## Clone the repository
 
+NORA was historically named `DPX`, and that name still appears in parts of the tooling and configuration.
 
+For example, clone the repository into `~/nora`:
 
-#### Clone the git repository
+```bash
+git clone https://<yourname>@bitbucket.org/reisert/dpx.git ~/nora
+```
 
-**NORA was historically named DPX. Note that this name might still often be used in the following.**<span style="font-weight: 400;"> Clone the repository into to a temp folder, or to your favorite program place.  
-</span><span style="font-weight: 400;">Let's say we clone to your home directory into </span><span style="font-weight: 400;">~/nora</span>
+For multi-user installations, you may want to assign a shared group such as `dpxuser` and apply group-friendly permissions to the checkout:
 
-`<span style="font-weight: 400;">git clone  https://<yourname>@bitbucket.org/reisert/dpx.git ~/nora</span>`
+```bash
+find ~/nora -type d -exec chmod g+s {} +
+chgrp -R NORA ~/nora
+setfacl -R -d -m g::rwx ~/nora
+```
 
-<span style="font-weight: 400;">If want to use NORA in a multi-user environment you might want to create a specific group (we usually use </span>*<span style="font-weight: 400;">dpxuser</span>*<span style="font-weight: 400;">) and change the group of that directory (recursivey) accordingly. </span><span style="font-weight: 400;">In any case, you have to set the s -flag and some ACLs recursively to that dir </span>*<span style="font-weight: 400;">(you might have to run this as sudo. In this case make sure to apply it to the correct ~/nora directory !! )</span>*
+Run these with `sudo` if needed, but make sure they target the correct `~/nora` directory.
 
-`<span style="font-weight: 400;">find ~/nora  -type d -exec  chmod g+s {} +</span>`
+## Initial configuration
 
-<span style="font-weight: 400;">If want to manage rights by ar group user</span>
+Go into the NORA directory and run:
 
-`<span style="font-weight: 400;">chgrp -R NORA ~/nora # if you manage your right via usergroup NORA./dp</span>`
+```bash
+./install
+```
 
-<span style="font-weight: 400;">nonetheless</span>
+This creates local configuration files in `conf/`.
 
-`<span style="font-weight: 400;">setfacl -R -d -m g::rwx ~/nora</span>`
+NORA has three main modules:
 
-#### Initial configuration
+- Frontend: web server with image viewer
+- DICOM node: receives images from a PACS
+- Backend: processing layer, depending on your MATLAB or Node.js setup and on Slurm or SGE
 
-<span style="font-weight: 400;">Go into the nora directory and run </span><span style="font-weight: 400;">./install</span>
+By default, all three modules are enabled. Edit `conf/main.conf` and set at least:
 
-<span style="font-weight: 400;">This will create some local config files in the "conf" directory (for details see separate section below).</span>
+```text
+MATLABPATH: <your-path-to-matlab>
+```
 
-<span style="font-weight: 400;"> NORA has 3 modules </span>
+If you are behind a proxy, you may also need:
 
-- **Frontend:** *<span style="font-weight: 400;">webserver with image viewer </span>*
-- **DICOM node**<span style="font-weight: 400;"> to receive images from a PACS </span>
-- **Backend:**<span style="font-weight: 400;"> processing module (depending on your preferences matlab or nodejs and slurm or SGE based)</span>
+```text
+DOCKER_http_proxy: "..."
+```
 
-<span style="font-weight: 400;">By default, all three modules are enabled. To run NORA in this default configuration edit </span><span style="font-weight: 400;">main.conf</span><span style="font-weight: 400;"> and set at least </span><span style="font-weight: 400;">MATLABPATH: &lt;your-path-to-matlab&gt;</span>
+Also set the user and group NORA should run as:
 
-<span style="font-weight: 400;">If you are behind a proxy, it might also be necessary to set the proxy (maybe even with user/password)</span>
+```text
+DPXUSER: "..."
+DPXGROUP: "..."
+```
 
-`<span style="font-weight: 400;">DOCKER_http_proxy:" ... "</span>`
+Configuration files are documented separately in [Configuration Files](configuration-files.md).
 
-<span style="font-weight: 400;">Also set the user Nora should act as in the main.conf</span>
+## Build and start the Docker setup
 
-`<span style="font-weight: 400;">DPXUSER: " ... "</span><span style="font-weight: 400;"><br></br></span><span style="font-weight: 400;">DPXGROUP: " ... "</span>`
+The main control entrypoint is `dpxcontrol`. You can inspect available commands with:
 
-#### Build the docker image
+```bash
+./dpxcontrol
+```
 
-<span style="font-weight: 400;">Your main function to control NORA is </span><span style="font-weight: 400;">dpxcontrol</span><span style="font-weight: 400;">. You can always run</span>
+Build the Docker image:
 
-`<span style="font-weight: 400;">./dpxcontrol</span>`
+```bash
+./dpxcontrol docker build
+```
 
-<span style="font-weight: 400;">to get more help. To build the DOCKER image, first run</span>
+Then start all modules:
 
-`<span style="font-weight: 400;">./dpxcontrol docker build</span>`
+```bash
+./dpxcontrol start
+```
 
-<span style="font-weight: 400;">This will take a while. If everything went well, start all modules with</span>
+If installation or startup failed previously, there may be stale containers left behind. In that case, use the suggested cleanup commands or start with `--force` to remove old NORA containers automatically.
 
-`<span style="font-weight: 400;">./dpxcontrol start</span>`
+Check the current status with:
 
-<span style="font-weight: 400;">If something went wrong during installation / starts, there might be old 'zombie' containers. In this case you will be suggested docker commands to remove them. You can also start with </span><span style="font-weight: 400;">--force</span><span style="font-weight: 400;">to autoremove old NORA containers.</span>
+```bash
+./dpxcontrol status
+```
 
-<span style="font-weight: 400;">To check the status, now use</span>
+If Docker starts correctly, the web interface should be reachable.
 
-`<span style="font-weight: 400;">./dpxcontrol status</span>`
+## Log in to the web interface
 
-<span style="font-weight: 400;">If at least the first point, Docker, is running nicely, you should be able to log into the Webinterface. (see below)</span>
+Open `http://localhost:81`.
 
-#### Log into the Webinterface
+Default credentials:
 
-<span style="font-weight: 400;">Now, open a web-browser and go to </span><span style="font-weight: 400;">localhost:81</span><span style="font-weight: 400;">. Default login is</span><span style="font-weight: 400;">  
-  
-</span><span style="font-weight: 400;">user</span>**:**<span style="font-weight: 400;"> root  
-</span><span style="font-weight: 400;">password</span>**:**<span style="font-weight: 400;"> dpxuser</span>
+```text
+user: root
+password: dpxuser
+```
 
-<span style="font-weight: 400;">There are several options to create new users. You can either connect to an existing LDAP server, or just create users based on the internal user management of NORA (see Administration section for details). </span>
+You can later switch to LDAP or manage users with NORA's internal user management.
 
-#### Troubleshooting and testing
+## Troubleshooting and testing
 
-<span style="font-weight: 400;">Most log files are written into</span>
+Most log files are written to:
 
-`<span style="font-weight: 400;"><path-to-nora>/var/syslogs/</span>`
+```text
+<path-to-nora>/var/syslogs/
+```
 
-<span style="font-weight: 400;">These can also be seen from the </span>*<span style="font-weight: 400;">admin</span>*<span style="font-weight: 400;"> dialog at the top of the webinterface. </span>**If the daemon is not starting (or stopping again, red status) check the daemon.log for more info.**<span style="font-weight: 400;"> In case of a license error, maybe you have to forward your MAC adress to Docker (see </span><span style="font-weight: 400;">main.conf</span><span style="font-weight: 400;"> for more info)</span>
+They are also visible from the `admin` dialog in the web interface.
 
-<span style="font-weight: 400;">For other system parts, there are also some test functions</span>
+If the daemon starts and then stops again, check `daemon.log` first. If you see a license-related error, you may need to forward the host MAC address into Docker; see `main.conf`.
 
-`<span style="font-weight: 400;">./dpxcontrol test [slurm | email | more_to_be_programmed]</span>`
+Some subsystems can also be tested explicitly:
 
-#### Upgrade the database
+```bash
+./dpxcontrol test [slurm | email | more_to_be_programmed]
+```
 
-<span style="font-weight: 400;">When your daemon is running nicely, it might be necessary to upgrade the initial database with</span>
+## Upgrade the database
 
-`<span style="font-weight: 400;">./dpxcontrol matlab updatedb</span>`
+Once the daemon is running correctly, you may need to upgrade the initial database:
 
-#### Autostart on system startup
+```bash
+./dpxcontrol matlab updatedb
+```
 
-<span style="font-weight: 400;">To automatically start NORA when your computer starts, you can for example add </span><span style="font-weight: 400;">&lt;path-to-nora&gt;/dpxcontrol start --force</span> <span style="font-weight: 400;">to your </span><span style="font-weight: 400;">/etc/rc.local</span>
+## Start automatically on boot
 
-#### Slurm setup
+One option is to add the following to `/etc/rc.local`:
 
-<span style="font-weight: 400;">A proper configuration of slurm is a science on its own. Ask google for more information. If you are running slurm inside docker (default), the </span><span style="font-weight: 400;">conf/slurm.conf</span><span style="font-weight: 400;"> is used and you do not have to do too much. Otherwise, if docker is installed outside (this should be the correct practice) you have to it install via </span>
+```bash
+<path-to-nora>/dpxcontrol start --force
+```
 
-`<span style="font-weight: 400;">sudo apt-get install slurm-wlm</span>`
+## Slurm setup
 
-<span style="font-weight: 400;">on a deb-system and set </span>
+Slurm can run inside Docker or on the host system.
 
-`<span style="font-weight: 400;">DOCKER_run_daemon_in_docker: 0,</span>`
+If you use the default Docker-based setup, `conf/slurm.conf` is used and little extra configuration should be required.
 
-<span style="font-weight: 400;">in the </span><span style="font-weight: 400;">&lt;path-to-nora&gt;/conf/main.conf</span><span style="font-weight: 400;"> file. For configuring slurm itself there is a configurator interface via html, which you usually find here </span>
+If Slurm runs outside Docker, install it on Debian-based systems with:
 
-`<span style="font-weight: 400;">/usr/share/doc/slurmctld/slurm-wlm-configurator.easy.html</span>`
+```bash
+sudo apt-get install slurm-wlm
+```
 
-<span style="font-weight: 400;">which generates a conf file </span><span style="font-weight: 400;">/etc/slurm-llnl/slurm.conf</span><span style="font-weight: 400;"> where you have replace the hostname by the machine you are running NORA on. Further, the partitions have to specified. NORA has as default two partitions</span><span style="font-weight: 400;">  
-</span><span style="font-weight: 400;">(computing queues) DPXproc and DPXimport, which have to specified in the slurm.conf like in this example:</span>
+Then set this in `conf/main.conf`:
 
-`<span style="font-weight: 400;"># COMPUTE NODES</span><span style="font-weight: 400;"><br></br></span><span style="font-weight: 400;">NodeName=hostname CPUs=8 State=UNKNOWN</span><span style="font-weight: 400;"><br></br></span><span style="font-weight: 400;">PartitionName=DPXproc Nodes=hostname Default=YES MaxTime=INFINITE State=UP</span><span style="font-weight: 400;"><br></br></span><span style="font-weight: 400;">PartitionName=DPXimport Nodes=hostname Default=YES MaxTime=INFINITE State=UP</span>`
+```text
+DOCKER_run_daemon_in_docker: 0
+```
 
-<span style="font-weight: 400;">Alternatively, if you have an existing SLURM running with predefined paritions, you can change the paritions (queues) in NORA’s configuration in </span><span style="font-weight: 400;">&lt;path-to-nora&gt;/conf/main.conf (SLURM\_QUEUES)</span>
+For Slurm configuration, you can use the configurator page usually located at:
 
-<span style="font-weight: 400;">Also consider </span>
+```text
+/usr/share/doc/slurmctld/slurm-wlm-configurator.easy.html
+```
 
-`<span style="font-weight: 400;">./dpxcontrol test slurm </span>`
+That typically generates a file at:
 
-<span style="font-weight: 400;">for testing whether your slurm configuration is working.</span>
+```text
+/etc/slurm-llnl/slurm.conf
+```
 
-#### General Configuration
+Replace the hostname with the machine running NORA and define the required partitions. By default, NORA expects two queues, `DPXproc` and `DPXimport`, for example:
 
-<span style="font-weight: 400;">All configuration files are located in </span><span style="font-weight: 400;">&lt;path-to-nora&gt;/conf</span><span style="font-weight: 400;"> directory. The configuration files are</span>
+```ini
+# COMPUTE NODES
+NodeName=hostname CPUs=8 State=UNKNOWN
+PartitionName=DPXproc Nodes=hostname Default=YES MaxTime=INFINITE State=UP
+PartitionName=DPXimport Nodes=hostname Default=YES MaxTime=INFINITE State=UP
+```
 
-- <span style="font-weight: 400;">main.conf </span><span style="font-weight: 400;">- includes all major configurations, responsible for </span>
-- <span style="font-weight: 400;">Location of external programs (MATLAB etc)</span>
-- <span style="font-weight: 400;">DOCKER port forwarding</span>
-- <span style="font-weight: 400;">Daemon beahviour</span>
-- <span style="font-weight: 400;">Import behavior (dicoms etc)</span>
-- <span style="font-weight: 400;">Mysql information</span>
-- <span style="font-weight: 400;">signin/signup behaviour, LDAP configuration</span>
-- <span style="font-weight: 400;">Backup behavior</span>
+If you already have an existing Slurm installation with predefined partitions, you can instead change NORA's configured queues in `conf/main.conf` via `SLURM_QUEUES`.
 
-- <span style="font-weight: 400;">pacs.conf -</span><span style="font-weight: 400;"> includes all information how to connect to external dicom nodes</span>
-- <span style="font-weight: 400;">routes.conf </span><span style="font-weight: 400;">- ip-addresses of DB, and routes of mount dirs (depending on hostnames diffferent mount locations are possible</span>
-- <span style="font-weight: 400;">slurm.conf </span><span style="font-weight: 400;">- slurm configuration</span>
-- <span style="font-weight: 400;">smail.conf </span><span style="font-weight: 400;">- mail configuration</span>
+To test the Slurm configuration:
+
+```bash
+./dpxcontrol test slurm
+```

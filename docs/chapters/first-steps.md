@@ -35,4 +35,6 @@ To control the layout of the viewports use the layout selector located at the ce
 
 ##### Keyboard Shortcuts
 
+For a code-checked list based on the current `unstable` frontend, see [Keyboard and Mouse Actions](keyboard-and-mouse-actions.md).
+
 <table border="1" id="bkmrk-1-6%2C0-shortcuts-to-s" style="border-collapse: collapse; width: 100%; height: 140px;"><tbody><tr style="height: 28px;"><td style="width: 50%; height: 28px;">1-6,0</td><td style="width: 50%; height: 28px;">shortcuts to standard CT windowings</td></tr><tr style="height: 28px;"><td style="width: 50%; height: 28px;">Space</td><td style="width: 50%; height: 28px;">toggle ROI edit, see[ ROI tool](roi-tool.md)</td></tr><tr style="height: 28px;"><td style="width: 50%; height: 28px;">s</td><td style="width: 50%; height: 28px;">open settings window</td></tr><tr style="height: 28px;"><td style="width: 50%; height: 28px;">x,y</td><td style="width: 50%; height: 28px;">decrease/increase scroll speed</td></tr><tr style="height: 28px;"><td style="width: 50%; height: 28px;">arrow up/down</td><td style="width: 50%; height: 28px;">change subject (when using autoloader)</td></tr><tr><td style="width: 50%;">(shift) Ctrl-Z</td><td style="width: 50%;">Undo/Redo ROI drawing</td></tr></tbody></table>

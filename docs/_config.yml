@@ -1,4 +1,4 @@
-title: Noras awesome Documentation
+title: Nora Docs
 email: marco.reisert@uniklinik-freiburg.de
-description:  This will appear in your document head meta (for Google search results) and in your feed.xml site description. 
+description: Documentation for NORA, covering installation, configuration, data import, visualization, processing, administration, and everyday clinical and research workflows.
 remote_theme: pages-themes/dinky@v0.2.0

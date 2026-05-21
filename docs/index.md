@@ -11,6 +11,7 @@ Normalized from a BookStack export into repo-friendly markdown chapters.
 
 - [Viewer](chapters/viewer.md)
 - [First Steps](chapters/first-steps.md)
+- [Keyboard and Mouse Actions](chapters/keyboard-and-mouse-actions.md)
 - [Projects and Subject/Studies](chapters/projects-and-subject-studies.md)
 - [Autoloaders](chapters/autoloaders.md)
 - [URL Calls and Sharedlinks](chapters/url-calls-and-sharedlinks.md)
@@ -30,7 +31,6 @@ Normalized from a BookStack export into repo-friendly markdown chapters.
 
 ## Data Import
 
-- [Data import](chapters/data-import.md)
 - [PACS Querier](chapters/pacs-querier.md)
 - [Manual import](chapters/manual-import.md)
 - [Create Project From Existing Data](chapters/create-project-from-existing-data.md)
@@ -47,12 +47,6 @@ Normalized from a BookStack export into repo-friendly markdown chapters.
 
 ## Installation and Administration
 
-- [Installation](chapters/installation.md)
-- [NORA inside a Docker](chapters/nora-inside-a-docker.md)
+- [Installation](chapters/nora-inside-a-docker.md)
+- [Configuration Files](chapters/configuration-files.md)
 - [Administration Backend](chapters/administration-backend.md)
-
-## Notes
-
-- Original export is preserved in `../nora-documentation.md`.
-- Local images live under `assets/images/`.
-- Migration details and unresolved links are listed in `migration-report.md`.
