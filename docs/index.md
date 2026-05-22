@@ -36,6 +36,7 @@ The documentation below is organized by task. It covers day-to-day viewer usage,
 
 ## Data Import
 
+- [Data Import Overview](chapters/data-import.md)
 - [PACS Querier](chapters/pacs-querier.md)
 - [Manual import](chapters/manual-import.md)
 - [Create Project From Existing Data](chapters/create-project-from-existing-data.md)
@@ -43,6 +44,7 @@ The documentation below is organized by task. It covers day-to-day viewer usage,
 
 ## Processing and AI
 
+- [Processing Overview](chapters/processing.md)
 - [General](chapters/general.md)
 - [Batchtool](chapters/batchtool.md)
 - [Jobs](chapters/jobs.md)

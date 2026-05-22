@@ -104,6 +104,8 @@ OCTAVEPATH: <your-path-to-octave>
 
 There are various other configurations, which are documented separately in [Configuration Files](configuration-files.md).
 
+For the corresponding service-control commands, use [System Backend](system-backend.md). For project-level backend CLI usage after installation, use [Administration Backend](administration-backend.md).
+
 ## Build and start the Docker setup
 
 The main control entrypoint is `dpxcontrol`. You can inspect available commands with:
@@ -133,6 +135,8 @@ Check the current status with:
 ```
 
 If Docker starts correctly, the web interface should be reachable.
+
+The fuller command reference for `dpxcontrol` and `nora --admin` is documented in [System Backend](system-backend.md).
 
 ## Log in to the web interface
 
@@ -219,6 +223,14 @@ NodeName=hostname CPUs=8 State=UNKNOWN
 PartitionName=DPXproc Nodes=hostname Default=YES MaxTime=INFINITE State=UP
 PartitionName=DPXimport Nodes=hostname Default=YES MaxTime=INFINITE State=UP
 ```
+
+For the NORA-side queue model, queue rights, and jail configuration, continue with [Slurm, Queues, and Jails](slurm-queues-and-jails.md).
+
+## Related Topics
+
+- Use [PACS and storescp Setup](pacs-storescp-setup.md) if this installation should receive DICOM data from scanners or PACS.
+- Use [Interactive Development Services](interactive-development-services.md) if users should launch Jupyter, code-server, or OpenSSH sessions from NORA.
+- Use [Projects, Users, and Rights](projects-users-and-rights.md) for the user/project access model after the instance is running.
 
 If you already have an existing Slurm installation with predefined partitions, you can instead change NORA's configured queues in `conf/main.conf` via `SLURM_QUEUES`.
 

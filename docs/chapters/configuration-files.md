@@ -23,6 +23,13 @@ Some practical guidance for the most important files:
 - Edit `smail.conf` if the platform should send emails or notifications that include absolute instance URLs.
 - Edit `slurm.conf`, `gres.conf`, and `jail.conf` only if you use those features.
 
+For the operational meaning of these files, use the dedicated chapters:
+
+- [PACS and storescp Setup](pacs-storescp-setup.md) for `pacs.conf`
+- [Slurm, Queues, and Jails](slurm-queues-and-jails.md) for `slurm.conf`, `gres.conf`, and `jail.conf`
+- [Interactive Development Services](interactive-development-services.md) for `openssh.conf`, Jupyter, and code-server related setup
+- [System Backend](system-backend.md) for the `dpxcontrol` commands that act on these configs
+
 The current codebase also includes additional template-based configuration files that are feature-specific and may not be created automatically in every installation:
 
 - `openssh.conf`: optional SSH `ForceCommand` injection used by `bin/runsshd.sh`

@@ -12,3 +12,10 @@ In conclusion, what it provides:
 - Definitions of inputs via Tags or filepatterns with wildcards
 - Composition of processing pipelines based on predefined scripts/jobs (mostly MATLAB), or custom MATLAB/BASH/Python code
 - Submission of jobs to a cluster (Slurm/SGE) with direct access to logs and errors
+
+## Related Topics
+
+- Use [Batchtool](batchtool.md) for the user-facing batch editor and job composition workflow.
+- Use [Jobs](jobs.md) for the runtime job model, logs, and command execution context.
+- Use [Administration Backend](administration-backend.md) for selector syntax, tags, and CLI or Python-based file selection.
+- Use [Slurm, Queues, and Jails](slurm-queues-and-jails.md) for cluster-side queue and sandbox setup.
