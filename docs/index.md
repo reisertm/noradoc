@@ -2,6 +2,10 @@
 
 Normalized from a BookStack export into repo-friendly markdown chapters.
 
+NORA is a web-based platform for medical imaging research. It combines data access, viewing, annotation, processing, and project-based organization in one environment so that teams can move from image retrieval and quality control to AI-supported analysis and result review without stitching together separate tools.
+
+The documentation below is organized by task. It covers day-to-day viewer usage, annotation tools, data import, processing workflows, Jupyter integration, and installation or administration topics.
+
 ## Overview
 
 - [Introduction](chapters/introduction.md)
@@ -38,7 +42,6 @@ Normalized from a BookStack export into repo-friendly markdown chapters.
 
 ## Processing and AI
 
-- [Processing](chapters/processing.md)
 - [General](chapters/general.md)
 - [Batchtool](chapters/batchtool.md)
 - [Jobs](chapters/jobs.md)

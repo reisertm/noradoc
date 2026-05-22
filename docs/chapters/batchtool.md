@@ -7,7 +7,7 @@ Consider Figure 2 below: the subject/studies table on the left is used for the s
 Batches are launched for every subjects/study independently in parallel. The jobs within a batch run sequentially. You can also choose different running option (see (G) in Figure 2). Depending on the selection level (subjects or studies), the batches are iterated over subjects or patients  
  ![image-1601205201699.png](../assets/images/gallery/2020-09/image-1601205201699.png)  
 Imagine a scenario where you have multiple studies per patient, which have to be linked in some sense. Then, the subject level is appropriate. For example, think of a neuroimaging analysis where you a have a CT study (which contains, e.g. electrode information) and a MR study (which contains soft tissue anatomical information), or think of a simple longitudinal analysis. Otherwise, if your your studies should all be treated in an equal manner, the study level is appropriate.
-
+![alt text](../assets/images/gallery/image_batchtool_fig2.png)
 ##### **Figure 2: Batchtool overview.**
 
 #### The Anatomy of a Job
