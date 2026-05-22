@@ -17,6 +17,7 @@ The documentation below is organized by task. It covers day-to-day viewer usage,
 - [First Steps](chapters/first-steps.md)
 - [Keyboard and Mouse Actions](chapters/keyboard-and-mouse-actions.md)
 - [Projects and Subject/Studies](chapters/projects-and-subject-studies.md)
+- [Projects, Users, and Rights](chapters/projects-users-and-rights.md)
 - [Autoloaders](chapters/autoloaders.md)
 - [URL Calls and Sharedlinks](chapters/url-calls-and-sharedlinks.md)
 
@@ -52,6 +53,7 @@ The documentation below is organized by task. It covers day-to-day viewer usage,
 
 - [Installation](chapters/nora-inside-a-docker.md)
 - [Configuration Files](chapters/configuration-files.md)
+- [Slurm, Queues, and Jails](chapters/slurm-queues-and-jails.md)
 - [Interactive Development Services](chapters/interactive-development-services.md)
 - [Administration Backend](chapters/administration-backend.md)
 - [System Backend](chapters/system-backend.md)

@@ -1,4 +1,4 @@
-# PACS and `storescp` Setup
+# PACS and storescp Setup
 
 This chapter explains how NORA is configured to:
 
@@ -15,11 +15,68 @@ The operational control layer is:
 - `dpxcontrol`
 - `nora --admin`
 
-This chapter is based on:
+## A Primer: Basic DICOM communication concepts
 
-- `/nfs/norasys/unstable/conf/pacs.conf`
-- `/nfs/norasys/unstable/conf/templates/template.pacs.conf`
-- `/nfs/norasys/unstable/dpxcontrol`
+Before looking at the NORA config, it helps to keep a few DICOM basics in mind.
+
+### DICOM nodes
+
+In network terms, a PACS, scanner, workstation, or NORA listener is a DICOM node. A node is simply a system that can participate in DICOM communication.
+
+Typical examples are:
+
+- a scanner that sends acquired series
+- a hospital PACS that stores and serves studies
+- a workstation that queries or retrieves studies
+- a NORA `storescp` listener that receives incoming data
+
+### AE title, host, and port
+
+A DICOM node is usually identified by three pieces of information:
+
+- AE title
+- host or IP address
+- port
+
+The AE title is the logical DICOM application name. It is not the same thing as the hostname. In practice, remote PACS administrators often need exactly this tuple to register NORA as a sender, receiver, or move target.
+
+### Push versus query/retrieve
+
+There are two common ways imaging data reaches NORA:
+
+1. push
+2. query/retrieve
+
+In a push workflow, a scanner or PACS sends images directly to a NORA receive node. In NORA, this is handled by `storescp`.
+
+In a query/retrieve workflow, NORA first asks a remote PACS what studies exist and then requests delivery of selected data. In NORA, this is handled by `pacsquery`, typically using C-FIND and C-MOVE.
+
+### Send, receive, and move target
+
+These roles are easy to mix up:
+
+- receive node
+  A node that listens for incoming DICOM objects.
+- send target
+  A remote node to which NORA sends data.
+- move target
+  A receive node that a remote PACS is allowed to send data to after a C-MOVE request.
+
+This is why NORA separates:
+
+- `storescp` for receive nodes
+- `pacs` for send targets
+- `pacsquery` for query/retrieve definitions
+
+### Why a dedicated move node is often useful
+
+For PACS querying, a dedicated `movescu` receive node is often cleaner than reusing the normal inbound receive node. It gives you:
+
+- a separate port
+- a separate inbox folder
+- clearer debugging when imports fail
+
+That is the reason the config templates show a dedicated `NORA_MOVE`-style node for query/retrieve setups.
 
 ## Three different PACS-related sections
 
@@ -38,7 +95,7 @@ In short:
 - `pacsquery` = search and pull from a remote PACS
 - `pacs` = push from NORA to a remote PACS
 
-## `storescp`: receiving data into NORA
+## storescp: receiving data into NORA
 
 The `storescp` block defines one or more DICOM listener nodes.
 
