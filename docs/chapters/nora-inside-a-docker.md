@@ -82,10 +82,11 @@ NORA has three main modules:
 - DICOM node: receives images from a PACS
 - Backend: processing layer, depending on your MATLAB or Node.js setup and on Slurm or SGE
 
-By default, all three modules are enabled. Edit `conf/main.conf` and set at least:
+By default, all three modules are enabled. Edit `conf/main.conf` and set the user and group NORA should run as:
 
 ```text
-MATLABPATH: <your-path-to-matlab>
+DPXUSER: "..."
+DPXGROUP: "..."
 ```
 
 If you are behind a proxy, you may also need:
@@ -94,14 +95,14 @@ If you are behind a proxy, you may also need:
 DOCKER_http_proxy: "..."
 ```
 
-Also set the user and group NORA should run as:
+If you want to use matlab and/or octave
 
 ```text
-DPXUSER: "..."
-DPXGROUP: "..."
+MATLABPATH: <your-path-to-matlab>
+OCTAVEPATH: <your-path-to-octave>
 ```
 
-Configuration files are documented separately in [Configuration Files](configuration-files.md).
+There are various other configurations, which are documented separately in [Configuration Files](configuration-files.md).
 
 ## Build and start the Docker setup
 

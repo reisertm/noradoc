@@ -25,7 +25,7 @@ Depending on the installation, NORA can support both local institutional deploym
 The chapters in this documentation are organized by task rather than by internal implementation. If you are new to NORA, a good path is:
 
 1. Start with [What is NORA?](what-is-nora.md).
-2. Continue with [First Steps](first-steps.md) and [Viewer](viewer.md).
+2. Continue with [First Steps](first-steps.md).
 3. Move on to import, processing, and job-related chapters as needed.
 4. Use the installation and administration chapters if you are setting up or maintaining an instance.
 

@@ -52,4 +52,7 @@ The documentation below is organized by task. It covers day-to-day viewer usage,
 
 - [Installation](chapters/nora-inside-a-docker.md)
 - [Configuration Files](chapters/configuration-files.md)
+- [Interactive Development Services](chapters/interactive-development-services.md)
 - [Administration Backend](chapters/administration-backend.md)
+- [System Backend](chapters/system-backend.md)
+- [PACS and storescp Setup](chapters/pacs-storescp-setup.md)

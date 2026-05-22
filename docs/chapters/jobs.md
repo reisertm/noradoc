@@ -16,8 +16,25 @@ In **MATLAB** the approach is a little bit different. You can manually add input
 
 The input and output filenames are resolved to absolute paths that may be used directly.
 
+For BASH and Python jobs it is often useful to call the NORA backend CLI `nora` directly from within the job. This gives access to project-aware file selection, tagging, metadata export, output-path computation, and other backend functions described in [Administration Backend](administration-backend.md).
+
 ![image-1601211287963.png](../assets/images/gallery/2020-09/image-1601211287963.png)
 
 ##### **Figure 4: Generic Jobs**
 
-The Nora backend and related software is available to the jobs. The backend command is named nora. This allows bash jobs like: nora -a $1 --addtag mytagname. This example adds a tag to a file that was selected for processing, by making use of the backend.
+The Nora backend and related software is available to the jobs. The backend command is named `nora`.
+
+Typical use cases inside BASH or Python jobs are:
+
+- resolve additional project files with `nora -s ...`
+- compute managed output locations with `nora --out ...`
+- add or remove file tags with `nora --addtag ...` or `nora --rmtag ...`
+- export metadata with `nora --exportmeta ...`
+
+For example:
+
+```bash
+nora --addtag mytagname -s "$DPXpsid" "$f1"
+```
+
+This adds a tag to the file selected for processing. If the project context is already available through `DPXproject`, `-p MYPROJECT` can usually be omitted. For selector syntax and further examples, see [Administration Backend](administration-backend.md).
