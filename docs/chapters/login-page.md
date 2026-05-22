@@ -2,7 +2,7 @@
 
 Most NORA instances start at a login page before opening project data. The page provides the authenticated entry point for users and a few unauthenticated helper actions.
 
-![NORA login page](../assets/images/gallery/login/nora-login-panel.jpg)
+![NORA login page](../assets/images/gallery/login/nora-login-panel.png)
 
 ## Fields and actions
 
