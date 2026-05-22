@@ -13,6 +13,7 @@ The documentation below is organized by task. It covers day-to-day viewer usage,
 
 ## Viewer and Daily Use
 
+- [Login page](chapters/login-page.md)
 - [Viewer](chapters/viewer.md)
 - [First Steps](chapters/first-steps.md)
 - [Keyboard and Mouse Actions](chapters/keyboard-and-mouse-actions.md)
