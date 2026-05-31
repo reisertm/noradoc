@@ -1,7 +1,5 @@
 # LISP-Net: Clinician-Guided AI for Context-Aware Segmentation
 
-[![LISP-Net Demo](../docs/assets/images/gallery/2026-05/lisp-net-thumb.webp)](https://www.youtube.com/watch?v=DFkN3o8yA4w)
-
 **[Watch the demo video on YouTube](https://www.youtube.com/watch?v=DFkN3o8yA4w)**
 
 LISP-Net is a deep learning model that propagates a 2D ROI across distant slices using a single example as context. Given one annotated slice, it predicts the segmentation on other slices — adapting to your intention, anatomy, and image style.
