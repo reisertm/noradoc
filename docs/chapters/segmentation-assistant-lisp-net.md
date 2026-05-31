@@ -2,6 +2,8 @@
 
 **[Watch the demo video on YouTube](https://www.youtube.com/watch?v=DFkN3o8yA4w)**
 
+[LISP-Net repository](https://github.com/Machauer-P/lisp-net)
+
 LISP-Net is a deep learning model that propagates a 2D ROI across distant slices using a single example as context. Given one annotated slice, it predicts the segmentation on other slices — adapting to your intention, anatomy, and image style.
 
 It feels natural: draw on one slice, then let the model carry your intent forward. Interact with the model if it comes off track. If the model comes off track, interact with it.
