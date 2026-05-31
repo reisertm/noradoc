@@ -28,7 +28,7 @@ The documentation below is organized by task. It covers day-to-day viewer usage,
 - [Navigation Tool (alignment and deformations)](chapters/navigation-tool-alignment-and-deformations.md)
 - [Reading Tool](chapters/reading-tool.md)
 - [Segmentation Assistant for ROItool (nnInteractive)](chapters/segmentation-assistant-for-roitool-nninteractive.md)
-- [Segmentation Assistant for ROItool (LISP-Net)](docs/chapters/segmentation-assistant-lisp-net.md)
+- [Segmentation Assistant for ROItool (LISP-Net)](chapters/segmentation-assistant-lisp-net.md)
 
 ## Advanced Visualization
 
