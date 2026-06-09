@@ -55,7 +55,7 @@ The documentation below is organized by task. It covers day-to-day viewer usage,
 ## Installation and Administration
 
 - [Installation](chapters/nora-inside-a-docker.md)
-- [Configuration Files](chapters/configuration-files.md)
+- [Configuration](chapters/configuration-files.md)
 - [Slurm, Queues, and Jails](chapters/slurm-queues-and-jails.md)
 - [Interactive Development Services](chapters/interactive-development-services.md)
 - [Administration Backend](chapters/administration-backend.md)

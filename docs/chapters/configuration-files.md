@@ -23,6 +23,7 @@ Some practical guidance for the most important files:
 - Edit `smail.conf` if the platform should send emails or notifications that include absolute instance URLs.
 - Edit `slurm.conf`, `gres.conf`, and `jail.conf` only if you use those features.
 
+
 For the operational meaning of these files, use the dedicated chapters:
 
 - [PACS and storescp Setup](pacs-storescp-setup.md) for `pacs.conf`
@@ -37,3 +38,24 @@ The current codebase also includes additional template-based configuration files
 - `llm_assist.conf`: request and rate-limit settings for the `llm_assist` feature
 
 These template files live in `conf/templates/`. If you enable one of those features, create the corresponding local file in `conf/` and adapt it to your setup.
+
+
+## Changing the database password
+
+If you change the MySQL root password, update both MySQL user entries and the local credentials file:
+
+1. Start a MySQL terminal:
+
+   ```bash
+   nora --admin mysql terminal
+   ```
+
+2. Run the password change statements in MySQL:
+
+   ```sql
+   ALTER USER 'root'@'localhost' IDENTIFIED BY 'NEW_PASSWORD';
+   ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'NEW_PASSWORD';
+   FLUSH PRIVILEGES;
+   ```
+
+3. Update the password in `conf/creds.conf` so the NORA instance uses the new database credentials.
