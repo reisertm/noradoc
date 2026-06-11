@@ -1,6 +1,6 @@
 # LISP-Net: Clinician-Guided AI for Context-Aware Segmentation
 
-**[Watch the demo video on YouTube](https://www.youtube.com/watch?v=DFkN3o8yA4w)**
+**[Watch the demo video on YouTube](https://www.youtube.com/watch?v=SafGK6U0nDI)**
 
 [LISP-Net repository](https://github.com/Machauer-P/lisp-net)
 
