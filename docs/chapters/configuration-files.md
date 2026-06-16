@@ -44,7 +44,7 @@ These template files live in `conf/templates/`. If you enable one of those featu
 
 If you change the MySQL root password, update both MySQL user entries and the local credentials file:
 
-1. Start a MySQL terminal:
+1. On the host where the NORA Docker container is running, start a MySQL terminal:
 
    ```bash
    nora --admin mysql terminal
@@ -58,4 +58,8 @@ If you change the MySQL root password, update both MySQL user entries and the lo
    FLUSH PRIVILEGES;
    ```
 
-3. Update the password in `conf/creds.conf` so the NORA instance uses the new database credentials.
+3. Update the password in `conf/creds.conf`, then restart the daemon so the NORA instance uses the new database credentials:
+
+   ```bash
+   nora --admin daemon restart
+   ```

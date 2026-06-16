@@ -34,6 +34,7 @@ The documentation below is organized by task. It covers day-to-day viewer usage,
 
 - [Fiber Viewer](chapters/fiber-viewer.md)
 - [Fibertracking, Streamline Analysis](chapters/fibertracking-streamline-analysis.md)
+- [Table Viewer](chapters/table-viewer.md)
 
 ## Data Import
 
