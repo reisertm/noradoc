@@ -8,57 +8,57 @@ The documentation below is organized by task. It covers day-to-day viewer usage,
 
 ## Overview
 
-- [Introduction](chapters/introduction.md)
-- [What is NORA?](chapters/what-is-nora.md)
+- [Introduction](chapters/overview/introduction.md)
+- [What is NORA?](chapters/overview/what-is-nora.md)
 
 ## Viewer and Daily Use
 
-- [Viewer](chapters/viewer.md)
-- [First Steps](chapters/first-steps.md)
-- [Keyboard and Mouse Actions](chapters/keyboard-and-mouse-actions.md)
-- [Projects and Subject/Studies](chapters/projects-and-subject-studies.md)
-- [Projects, Users, and Rights](chapters/projects-users-and-rights.md)
-- [Autoloaders](chapters/autoloaders.md)
-- [URL Calls and Sharedlinks](chapters/url-calls-and-sharedlinks.md)
+- [Viewer](chapters/viewer-and-daily-use/viewer.md)
+- [First Steps](chapters/viewer-and-daily-use/first-steps.md)
+- [Keyboard and Mouse Actions](chapters/viewer-and-daily-use/keyboard-and-mouse-actions.md)
+- [Projects and Subject/Studies](chapters/viewer-and-daily-use/projects-and-subject-studies.md)
+- [Projects, Users, and Rights](chapters/viewer-and-daily-use/projects-users-and-rights.md)
+- [Autoloaders](chapters/viewer-and-daily-use/autoloaders.md)
+- [URL Calls and Sharedlinks](chapters/viewer-and-daily-use/url-calls-and-sharedlinks.md)
 
 ## Annotation and Reading Tools
 
-- [ROI-Tool](chapters/roi-tool.md)
-- [Marker-Tool](chapters/marker-tool.md)
-- [Navigation Tool (alignment and deformations)](chapters/navigation-tool-alignment-and-deformations.md)
-- [Reading Tool](chapters/reading-tool.md)
-- [Segmentation Assistant for ROItool (nnInteractive)](chapters/segmentation-assistant-for-roitool-nninteractive.md)
-- [Segmentation Assistant for ROItool (LISP-Net)](chapters/segmentation-assistant-lisp-net.md)
+- [ROI-Tool](chapters/annotation-and-reading-tools/roi-tool.md)
+- [Marker-Tool](chapters/annotation-and-reading-tools/marker-tool.md)
+- [Navigation Tool (alignment and deformations)](chapters/annotation-and-reading-tools/navigation-tool-alignment-and-deformations.md)
+- [Reading Tool](chapters/annotation-and-reading-tools/reading-tool.md)
+- [Segmentation Assistant for ROItool (nnInteractive)](chapters/annotation-and-reading-tools/segmentation-assistant-for-roitool-nninteractive.md)
+- [Segmentation Assistant for ROItool (LISP-Net)](chapters/annotation-and-reading-tools/segmentation-assistant-lisp-net.md)
 
 ## Advanced Visualization
 
-- [Fiber Viewer](chapters/fiber-viewer.md)
-- [Fibertracking, Streamline Analysis](chapters/fibertracking-streamline-analysis.md)
-- [Table Viewer](chapters/table-viewer.md)
+- [Fiber Viewer](chapters/advanced-visualization/fiber-viewer.md)
+- [Fibertracking, Streamline Analysis](chapters/advanced-visualization/fibertracking-streamline-analysis.md)
+- [Table Viewer](chapters/advanced-visualization/table-viewer.md)
 
 ## Data Import
 
-- [Data Import Overview](chapters/data-import.md)
-- [PACS Querier](chapters/pacs-querier.md)
-- [Manual import](chapters/manual-import.md)
-- [Create Project From Existing Data](chapters/create-project-from-existing-data.md)
-- [Dicom import via HTTP POST](chapters/dicom-import-via-http-post.md)
+- [Data Import Overview](chapters/data-import/data-import.md)
+- [PACS Querier](chapters/data-import/pacs-querier.md)
+- [Manual import](chapters/data-import/manual-import.md)
+- [Create Project From Existing Data](chapters/data-import/create-project-from-existing-data.md)
+- [Dicom import via HTTP POST](chapters/data-import/dicom-import-via-http-post.md)
 
 ## Processing and AI
 
-- [Processing Overview](chapters/processing.md)
-- [General](chapters/general.md)
-- [Batchtool](chapters/batchtool.md)
-- [Jobs](chapters/jobs.md)
-- [Jupyter Notebooks](chapters/jupyter-notebooks.md)
-- [Segmentation (Deep Learning)](chapters/segmentation-deep-learning.md)
+- [Processing Overview](chapters/processing-and-ai/processing.md)
+- [General](chapters/processing-and-ai/general.md)
+- [Batchtool](chapters/processing-and-ai/batchtool.md)
+- [Jobs](chapters/processing-and-ai/jobs.md)
+- [Jupyter Notebooks](chapters/processing-and-ai/jupyter-notebooks.md)
+- [Segmentation (Deep Learning)](chapters/processing-and-ai/segmentation-deep-learning.md)
 
 ## Installation and Administration
 
-- [Installation](chapters/nora-inside-a-docker.md)
-- [Configuration](chapters/configuration-files.md)
-- [Slurm, Queues, and Jails](chapters/slurm-queues-and-jails.md)
-- [Interactive Development Services](chapters/interactive-development-services.md)
-- [Administration Backend](chapters/administration-backend.md)
-- [System Backend](chapters/system-backend.md)
-- [PACS and storescp Setup](chapters/pacs-storescp-setup.md)
+- [Installation](chapters/installation-and-administration/nora-inside-a-docker.md)
+- [Configuration](chapters/installation-and-administration/configuration-files.md)
+- [Slurm, Queues, and Jails](chapters/installation-and-administration/slurm-queues-and-jails.md)
+- [Interactive Development Services](chapters/installation-and-administration/interactive-development-services.md)
+- [Administration Backend](chapters/installation-and-administration/administration-backend.md)
+- [System Backend](chapters/installation-and-administration/system-backend.md)
+- [PACS and storescp Setup](chapters/installation-and-administration/pacs-storescp-setup.md)
