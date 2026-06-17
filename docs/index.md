@@ -18,17 +18,18 @@ The documentation below is organized by task. It covers day-to-day viewer usage,
 - [Keyboard and Mouse Actions](chapters/viewer-and-daily-use/keyboard-and-mouse-actions.md)
 - [Projects and Subject/Studies](chapters/viewer-and-daily-use/projects-and-subject-studies.md)
 - [Projects, Users, and Rights](chapters/viewer-and-daily-use/projects-users-and-rights.md)
+- [Settings](chapters/viewer-and-daily-use/settings.md)
 - [Autoloaders](chapters/viewer-and-daily-use/autoloaders.md)
 - [URL Calls and Sharedlinks](chapters/viewer-and-daily-use/url-calls-and-sharedlinks.md)
 
 ## Annotation and Reading Tools
 
 - [ROI-Tool](chapters/annotation-and-reading-tools/roi-tool.md)
+- [Segmentation Assistant for ROItool (nnInteractive)](chapters/annotation-and-reading-tools/segmentation-assistant-for-roitool-nninteractive.md)
+- [Segmentation Assistant for ROItool (LISP-Net)](chapters/annotation-and-reading-tools/segmentation-assistant-lisp-net.md)
 - [Marker-Tool](chapters/annotation-and-reading-tools/marker-tool.md)
 - [Navigation Tool (alignment and deformations)](chapters/annotation-and-reading-tools/navigation-tool-alignment-and-deformations.md)
 - [Reading Tool](chapters/annotation-and-reading-tools/reading-tool.md)
-- [Segmentation Assistant for ROItool (nnInteractive)](chapters/annotation-and-reading-tools/segmentation-assistant-for-roitool-nninteractive.md)
-- [Segmentation Assistant for ROItool (LISP-Net)](chapters/annotation-and-reading-tools/segmentation-assistant-lisp-net.md)
 
 ## Advanced Visualization
 
