@@ -16,7 +16,7 @@ LISP-Net is **keyboard-driven** — there is no menu or toolbar. All commands ar
 
 ### Prerequisites
 
-First, use the [ROI Tool](https://reisertm.github.io/noradoc/chapters/roi-tool.html) to draw a **single 2D ROI** on one slice.
+First, use the [ROI Tool](https://reisertm.github.io/noradoc/chapters/annotation-and-reading-tools/roi-tool.html) to draw a **single 2D ROI** on one slice.
 
 ---
 
